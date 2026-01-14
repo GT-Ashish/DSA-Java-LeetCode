@@ -3,7 +3,7 @@ class Solution {
         int length = s.length();
         int sum = 0;
         for(int i = 0; i < length - 1 ;i++){
-            sum += Math.abs((int)s.charAt(i)-(int)s.charAt(i + 1));
+            sum += Math.abs(s.charAt(i)-s.charAt(i + 1));
         }
         return sum;
         
