@@ -1,10 +1,22 @@
 class Solution {
     public int missingNumber(int[] nums) {
-       int length = nums.length;
-       int sum = length * (length + 1) / 2;
-       for(int element : nums){
-        sum -= element;
-       }
-       return sum;
+        int i = 0;
+        int length = nums.length;
+        while(i < nums.length){
+            if(nums[i] == i || nums[i] == length){
+                i++;
+            }
+            else{
+                int temp = nums[i];
+                nums[i] = nums[nums[i]];
+                nums[temp] = temp;
+            }
+        }
+        for(int j = 0; j < length; j++){
+            if(nums[j] == length){
+                return j;
+            }
+        }
+        return length;
     }
 }
