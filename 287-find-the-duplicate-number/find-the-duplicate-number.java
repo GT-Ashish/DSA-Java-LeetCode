@@ -4,10 +4,12 @@ class Solution {
         int i = 0;
         while(i < length){
             if(nums[i] - 1 != i){
-                int temp = nums[i];
-                nums[i] = nums[nums[i] - 1];
-                nums[temp - 1] = temp;
-                if(nums[i] == nums[nums[i] - 1]){
+                if(nums[i] != nums[nums[i] - 1]){
+                    int temp = nums[i];
+                    nums[i] = nums[nums[i] - 1];
+                    nums[temp - 1] = temp;
+                }
+                else{
                     i++;
                 }
             }
