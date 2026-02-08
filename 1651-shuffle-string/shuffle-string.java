@@ -5,8 +5,6 @@ class Solution {
         for(int i = 0; i < length; i++){
             ans[indices[i]] = s.charAt(i);  
         }
-        StringBuilder sb = new StringBuilder();
-        sb.append(ans);
-        return sb.toString();
+        return String.valueOf(ans);
     }
 }
