@@ -8,13 +8,9 @@ class Solution {
         for(String s : word2){
             sb2.append(s);
         }
-        if(sb.length() == sb2.length()){
-            int length = sb.length();
-            for(int i = 0; i < length; i++){
-                if(sb.charAt(i) != sb2.charAt(i)){
-                    return false;
-                }
-            }
+        //to compare two string builders using toString()
+        //sb doesn't overide equals() due to hashmap logic breaking so its same as using ==
+        if(sb.toString().equals(sb2.toString())){
             return true;
         }
         return false;
