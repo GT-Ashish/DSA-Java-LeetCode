@@ -3,9 +3,7 @@ class Solution {
         //use this to convert string array directly to string
         String a = String.join("",word1);
         String b = String.join("",word2);
-        if(a.equals(b)){
-            return true;
-        }
-        return false;
+        //forgot that we can directly return this hehe
+        return a.equals(b);
     }
 }
