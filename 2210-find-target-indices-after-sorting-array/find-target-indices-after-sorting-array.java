@@ -1,35 +1,20 @@
 class Solution {
     public List<Integer> targetIndices(int[] nums, int target) {
-        ArrayList<Integer> list = new ArrayList<>();
-        Arrays.sort(nums);
-        int len = nums.length;
-        int left = 0; 
-        int right = len - 1;
-        while(left <= right){
-            int mid = left + (right - left) / 2;
-            if(nums[mid] == target){
-                list.add(mid);
-                int copy = mid;
-                while(mid + 1 < len && nums[mid + 1] == target){
-                    list.add(mid + 1);
-                    mid++;
-                }
-                while(copy - 1 >= 0 && nums[copy - 1] == target){
-                    list.add(copy - 1);
-                    copy--;
-                }
-                
-                break;
+        //more effiecient approach no sorting needed complexity O(n); 
+        ArrayList<Integer> list  = new ArrayList<>();
+        int smaller = 0;
+        int equal = 0;
+        for(int element : nums){
+            if(element == target){
+                equal++;
             }
-            else if(nums[mid] < target){
-                left = mid + 1;
-            }
-            else{
-                right = mid - 1;
+            else if(element < target){
+                smaller++;
             }
         }
-        Collections.sort(list);
+        for(int i = 0; i < equal; i++){
+            list.add(smaller + i);
+        }
         return list;
-        
     }
 }
