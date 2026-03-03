@@ -1,39 +1,24 @@
 class Solution {
-    public int[] intersection(int[] nums, int[] array) {
-        Arrays.sort(array);
-        Arrays.sort(nums);
-        int length = nums.length;
+    public int[] intersection(int[] nums1, int[] nums2) {
+        int [] f1 = new int [1001];
+        int [] f2 = new int [1001];
+        for(int element : nums1){
+            f1[element] += 1;
+        }
+        for(int element : nums2){
+            f2[element] += 1;
+        }
         ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < length; i++) {
-            while(i + 1 < length && nums[i] == nums[i + 1]){
-                i++;
-            }
-            if (binarysearch(array, nums[i])) {
-                list.add(nums[i]);
+        for(int i = 0; i <= 1000; i++){
+            if(f1[i] > 0 && f2[i] > 0){
+                list.add(i);
             }
         }
-
-        int size = list.size();
-        int[] answer = new int[size];
-        for (int i = 0; i < size; i++) {
-            answer[i] = list.get(i);
+        int len = list.size();
+        int [] array = new int [len];
+        for(int i = 0; i < len; i++){
+            array[i] = list.get(i);
         }
-        return answer;
-    }
-
-    public boolean binarysearch(int[] array, int target) {
-        int left = 0;
-        int right = array.length - 1;
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-            if (array[mid] == target) {
-                return true;
-            } else if (array[mid] < target) {
-                left = mid + 1;
-            } else {
-                right = mid - 1;
-            }
-        }
-        return false;
+        return array;
     }
 }
