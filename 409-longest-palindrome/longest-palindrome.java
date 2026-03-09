@@ -14,7 +14,6 @@ class Solution {
         }
         int flag = 0;
         for(int i = 0; i < 52; i++){
-            if(f[i] >= 2){
                 if(f[i] % 2 == 0){
                     answer += f[i];
                 }
@@ -23,12 +22,6 @@ class Solution {
                     flag = 1;
                 }
             }
-            else{
-                if(f[i] == 1){
-                    flag = f[i];
-                }
-            }
-        }
         return flag + answer; 
     }
 }
