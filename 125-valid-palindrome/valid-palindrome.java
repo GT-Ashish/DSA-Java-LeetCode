@@ -1,15 +1,28 @@
 class Solution {
     public boolean isPalindrome(String s) {
+        int start = 0;
+        int end = s.length() - 1;
         s = s.toLowerCase();
-        StringBuilder sb1 = new StringBuilder();
-        int len = s.length();
-        for (int i = 0; i < len; i++) {
-            char ch = s.charAt(i);
-            if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z'))       
-            {
-                sb1.append(ch);
+        while (start < end) {
+            while (start < end && !alphanum(s.charAt(start))) {
+                start++;
             }
+            while (start < end && !alphanum(s.charAt(end))) {
+                end--;
+            }
+            if (s.charAt(start) != s.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
-        return sb1.toString().equals(sb1.reverse().toString());
+        return true;
+    }
+
+    boolean alphanum(char ch){
+        if(ch >= '0' && ch <= '9' || ch >= 'a' && ch <= 'z'){
+            return true;
+        }
+        return false;
     }
 }
