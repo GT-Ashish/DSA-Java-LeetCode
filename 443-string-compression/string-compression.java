@@ -1,7 +1,7 @@
 class Solution {
     public int compress(char[] chars) {
         int len = chars.length;
-        String s = "";
+        StringBuilder sb = new StringBuilder();
         int count = 1;
         for(int i = 0; i < len - 1; i++){
             if(chars[i] == chars[i + 1]){
@@ -9,28 +9,28 @@ class Solution {
             }
             else{
                 if(count > 1){
-                    s += chars[i];
-                    s += count;
+                    sb.append(chars[i]);
+                    sb.append(count);
                     count = 1;
                 }
                 else{
-                    s += chars[i];
+                    sb.append(chars[i]);
                     count = 1;
                 }
             }
         }
         if(count > 1){
-            s += chars[len - 1];
-            s += count;
+            sb.append(chars[len - 1]);
+            sb.append(count);
             count = 1;
         }
         else{
-            s += chars[len - 1];
+            sb.append(chars[len - 1]);
             count = 1;
         }
-        len = s.length();
+        len = sb.length();
         for(int i = 0; i < len; i++){
-            chars[i] = s.charAt(i);
+            chars[i] = sb.charAt(i);
         }
         return len;
     }
